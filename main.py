@@ -7,7 +7,7 @@ import uvicorn
 import authengine
 import database
 
-app = FastAPI(docs_url=None, redoc_url=None)
+app = FastAPI(docs_url=None)
 db = database.Database()
 
 
@@ -25,26 +25,35 @@ def get_database_entry(username: str, token: str) -> JSONResponse:
     return JSONResponse({"error": "Unauthorised."}, 401)
 
 
+class AuthSchema(BaseModel):
+    username: str
+    token: str
+
+
 class RegisterSchema(BaseModel):
     username: str
-    password: str
+    token: str
+    new_username: str
+    new_password: str
 
 
 @app.post("/register")
-def register(data: RegisterSchema):
-    auth = authengine.register(data.username, data.password)
-    if type(auth) == bool and auth:
-        token = authengine.login(data.username, data.password)
+def register(data: RegisterSchema) -> JSONResponse:
+    try:
+        auth = authengine.register(data.username, data.token, data.new_username, data.new_password)
+        token = authengine.login(data.new_username, data.password)
         return JSONResponse({"success": "User registered.", "token": token}, 200)
-    return JSONResponse({"error": auth or "Something went wrong"}, 409)
+    except authengine.Error as e:
+        return JSONResponse({"error": auth.message or "Something went wrong"}, 409)
 
 
 @app.post("/login")
-def login(data: RegisterSchema):
-    token = authengine.login(data.username, data.password)
-    if token:
+def login(data: AuthSchema):
+    try:
+        token = authengine.login(data.username, data.token)
         return JSONResponse({"token": token}, 200)
-    return JSONResponse({"error": "Incorrect username or password."}, 401)
+    except authengine.Error as e:
+        return JSONResponse({"error": "Incorrect username or password."}, 401)
 
 
 config = uvicorn.Config(app, host="0.0.0.0", port=10000, lifespan="on", access_log=False, log_level="debug")

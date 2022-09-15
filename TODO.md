@@ -3,7 +3,7 @@
 - [ ] Easy to use system, with consistent fonts, colours and sizes. Users should be able to change the settings of the UI to match their needs.
 - [X] Secure system; access is protected by usernames and passwords. All passwords must be at least 8 characters in length and must include upper case, and a digit.
 - [X] There should be two layers of access rights; admin access right and general user access right.
-- [ ] Only Admin account holders can create new general accounts. 
+- [ ] Only Admin account holders can create new general accounts.
 - [ ] All users should be able to change their passwords.
 
 
@@ -14,7 +14,7 @@
 - [ ] All users must be able to change their passwords at any time.
 - [X] Passwords must be hashed and slated before stored in database.
 - [ ] The system should show welcome window to allow users to enter login details.
-- [ ] The system should identify the user (admin or general user) from their username, and allow them the right menu; admin menu to admin users and general menu to general users. 
+- [ ] The system should identify the user (admin or general user) from their username, and allow them the right menu; admin menu to admin users and general menu to general users.
 - [ ] when an incorrect username/ passwords are entered, appropriate message should show that will help users to login correctly without revealing any details on the user name or passwords.
 - [ ] After 3 unsuccessful attempts to login, the system should be locked for at least 1 hour.
 
@@ -26,7 +26,7 @@
 - [ ] Delete unwanted bookings
 
 
-### Admin users should be able to have all the general menu functions as well as able to: 
+### Admin users should be able to have all the general menu functions as well as able to:
 
 - [ ] create a new general user accounts
 - [ ] change passwords for an existing accounts
