@@ -1,0 +1,9 @@
+{
+  "test": {
+    "password": "$2b$12$l.saHNqjIe7wWvFaJzURWeZHO2x5aiIE6zeTLT.SFAq1evKHS5uSq",
+    "token": null,
+    "expires": null,
+    "salt": "$2b$12$l.saHNqjIe7wWvFaJzURWe",
+    "level": 0
+  }
+}
