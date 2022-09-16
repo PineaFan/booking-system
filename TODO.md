@@ -1,3 +1,7 @@
+1. [x] Incomplete
+2. [x] Backend
+3. [x] [Y] Frontend
+
 ### General Requirements:
 
 - [ ] Easy to use system, with consistent fonts, colours and sizes. Users should be able to change the settings of the UI to match their needs.
@@ -11,7 +15,7 @@
 
 - [ ] All users including admin, should be able to create a new bookings, change and update existing bookings, and remove unwanted bookings.
 - [ ] The system should archive any data older than 6 months.
-- [ ] All users must be able to change their passwords at any time.
+- [X] All users must be able to change their passwords at any time.
 - [X] Passwords must be hashed and slated before stored in database.
 - [ ] The system should show welcome window to allow users to enter login details.
 - [ ] The system should identify the user (admin or general user) from their username, and allow them the right menu; admin menu to admin users and general menu to general users.
