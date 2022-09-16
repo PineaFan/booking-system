@@ -1,9 +1,30 @@
 {
-  "test": {
-    "password": "$2b$12$l.saHNqjIe7wWvFaJzURWeZHO2x5aiIE6zeTLT.SFAq1evKHS5uSq",
+  "default": {
+    "password": "$2b$12$s0DixQHUUC2jj.bYqA510OeeUAxW8nd9oCVkHbNrjey1rMIdmoK52",
+    "token": "-2b-12-s0DixQHUUC2jj.bYqA510O0GR1IDSrtdkB8b9JqStVLTYw1XbpXF.",
+    "expires": "1663926116.055015",
+    "salt": "$2b$12$s0DixQHUUC2jj.bYqA510O",
+    "level": 0
+  },
+  "Pinea": {
+    "password": "$2b$12$Iir/DwV7vmp9Mh4D8lx40OdqYWj1F/Num5WnfDQqbAQkIg6N47eCu",
+    "token": "-2b-12-Iir_DwV7vmp9Mh4D8lx40OIsc243dUG9zS51HJtqm9sYI_Q9bce_O",
+    "expires": "1663926309.641565",
+    "salt": "$2b$12$Iir/DwV7vmp9Mh4D8lx40O",
+    "level": 2
+  },
+  "newUser": {
+    "password": "$2b$12$cKM.upo02jk6Pk9Wq6MGoucRLCfZTrfI0g5Gs5KA2alS3FfPBnqM6",
     "token": null,
     "expires": null,
-    "salt": "$2b$12$l.saHNqjIe7wWvFaJzURWe",
+    "salt": "$2b$12$cKM.upo02jk6Pk9Wq6MGou",
+    "level": 0
+  },
+  "Adib": {
+    "password": "$2b$12$vTYal4jSg/hdHZ.zR.NKDuu4sriiubUY1uF4TsoadtKHiodWLzb2m",
+    "token": "-2b-12-vTYal4jSg_hdHZ.zR.NKDueLyGf9BSX7Sb8Vi584Bk8MAKXLBgTU6",
+    "expires": "1663931011.96053",
+    "salt": "$2b$12$vTYal4jSg/hdHZ.zR.NKDu",
     "level": 0
   }
 }

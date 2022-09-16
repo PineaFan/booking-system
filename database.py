@@ -39,7 +39,6 @@ class Database:
             self._log(f"Deleted key {key} from database.\n")
             json.dump(data, file, indent=2)
 
-
 # import pymongo
 #
 #
