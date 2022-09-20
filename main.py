@@ -1,13 +1,15 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from fastapi.responses import PlainTextResponse, JSONResponse
 import asyncio
+
 import uvicorn
+from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse, JSONResponse
+from pydantic import BaseModel
 
 import authengine
+import bookings
 import database
 
-app = FastAPI(docs_url="/docs", redoc_url="/redoc")
+app = FastAPI(docs_url="/docs")
 db = database.Database()
 
 
@@ -98,6 +100,56 @@ def delete(data: MultiUserData) -> JSONResponse:
             action.code
         )
     return JSONResponse({"message": "User deleted.", "satus_code": 200}, 200)
+
+
+@app.patch("/user/password")
+def change_password(data: MultiUserData) -> JSONResponse:
+    """Lets users change the password of anyone a lower level than them, or themselves."""
+    action = authengine.change_password(data.auth_username, data.auth_token, data.username, data.password)
+    if isinstance(action, authengine.Error):
+        return JSONResponse(
+            {"message": action.message or "Something went wrong", "satus_code": action.code},
+            action.code
+        )
+    return JSONResponse({"message": "Password changed.", "satus_code": 200}, 200)
+
+
+class BookingData(BaseModel):
+    auth_username: str
+    auth_token: str
+    username: str | None = None
+    booking_id: str | None = None
+    # booking: bookings.BookingSchema | None = None
+
+
+@app.get("/bookings")
+def get_bookings(data: BookingData) -> JSONResponse:
+    """
+        Gets a booking by its id, or all if no id is provided.
+        Users can get the bookings of themselves, and anyone of a lower level.
+    """
+    action = bookings.get_bookings(data.auth_username, data.auth_token, data.username, data.booking_id)
+    if isinstance(action, bookings.Error):
+        return JSONResponse(
+            {"message": action.message or "Something went wrong", "satus_code": action.code},
+            action.code
+        )
+    return JSONResponse({"message": "Bookings retrieved.", "bookings": action, "satus_code": 200}, 200)
+
+
+@app.post("/bookings")
+def add_booking(data: BasicData) -> JSONResponse:
+    pass
+
+
+@app.delete("/bookings")
+def delete_booking(data: BasicData) -> JSONResponse:
+    pass
+
+
+@app.patch("/bookings")
+def modify_booking(data: BasicData) -> JSONResponse:
+    pass
 
 
 config = uvicorn.Config(app, host="0.0.0.0", port=10000, lifespan="on", access_log=False, log_level="trace")

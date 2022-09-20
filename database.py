@@ -11,7 +11,7 @@ class Database:
         with open(self.logfile, "a") as file:
             file.write(f"[{datetime.now()}] {message}")
 
-    def get(self, key) -> None | dict:
+    def get(self, key) -> None | dict | list:
         with open(self.url, "r") as file:
             data = json.load(file)
             if key in data:

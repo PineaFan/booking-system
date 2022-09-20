@@ -32,6 +32,8 @@ def is_valid_password(s: str) -> bool | Error:
 
 def is_user_logged_in(username: str, token: str) -> bool:
     user = logins.get(username)
+    if not user:
+        return False
     expected_token, expires = user["token"], user["expires"]
     if token != expected_token:
         return False
