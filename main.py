@@ -9,6 +9,7 @@ import authengine
 import bookings
 import database
 
+
 app = FastAPI(docs_url="/docs")
 db = database.Database()
 
